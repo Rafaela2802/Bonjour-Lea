@@ -27,7 +27,7 @@ const dialogues = [
         effects: ["❤️", "😂"]
     },
     {
-        text: "Bon… j’ai suffisamment travaillé pour aujourd’hui. Je retourne au lit. 😴",
+        text: "Bon… j’ai suffisamment bosser pour aujourd’hui. Je retourne au lit. 😴",
         animation: "sleep",
         effects: ["💤"]
     }
