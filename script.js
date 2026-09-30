@@ -12,17 +12,17 @@ const dialogues = [
         effects: ["👀"]
     },
     {
-        text: "Question existentielle… qui vient en premier : la poule ou l’œuf ? 🤔",
+        text: "Question existentielle… qui vient en premier ?la poule ou l’œuf ? 🤔",
         animation: "thinking",
         effects: ["🥚", "🤔"]
     },
     {
-        text: "Aucune idée. Bon… je te fais un café ? Ah non, j’ai pas de mains. 😭☕",
+        text: "Aucune idée ? Bon… je te fais un café ? Ah non, j’ai pas de mains. 😭☕",
         animation: "laugh",
         effects: ["☕", "😭"]
     },
     {
-        text: "Désolée, je t’embête mdr 😂 Mais bon courage pour aujourd’hui, t’es forte ! Et si quelqu’un t’embête… bah… appelle Tyson. Moi, je suis une poule mouillée. 😭",
+        text: "Désolée, je t’embête mdddrr 😂 Bon courage pour aujourd’hui, t’es forte et tu le sais ! Et si quelqu’un t’embête… bah… appelle Tyson. Moi, je suis une poule mouillée. 😭",
         animation: "laugh",
         effects: ["❤️", "😂"]
     },
