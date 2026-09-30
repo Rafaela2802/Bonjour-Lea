@@ -1,0 +1,212 @@
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    width: 100%;
+    height: 100%;
+}
+
+body {
+    overflow: hidden;
+    background: #f8dfd4;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.app {
+    width: 100%;
+    height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    overflow: hidden;
+}
+
+.scene {
+    position: relative;
+    width: 100%;
+    height: 100%;
+    max-width: 500px;
+    overflow: hidden;
+    background: #f8dfd4;
+}
+
+.background {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: 1;
+    pointer-events: none;
+    user-select: none;
+    opacity: 1;
+    transition: opacity 0.7s ease;
+    animation: backgroundBreathing 8s ease-in-out infinite;
+}
+
+@keyframes backgroundBreathing {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.015); }
+}
+
+.chicken-button {
+    position: absolute;
+    left: 50%;
+    bottom: 16%;
+    width: 260px;
+    height: 260px;
+    transform: translateX(-50%);
+    border: none;
+    background: transparent;
+    padding: 0;
+    cursor: pointer;
+    z-index: 5;
+    -webkit-tap-highlight-color: transparent;
+    transition: opacity 0.5s ease, transform 0.5s ease;
+}
+
+.chicken-button:not(.sleeping) .chicken {
+    animation: chickenBreathing 3s ease-in-out infinite;
+}
+
+.chicken {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    pointer-events: none;
+    user-select: none;
+}
+
+@keyframes chickenBreathing {
+    0%, 100% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-3px) scale(1.015); }
+}
+
+.chicken-button.jump .chicken {
+    animation: chickenJump 0.65s ease;
+}
+
+@keyframes chickenJump {
+    0% { transform: translateY(0) rotate(0deg); }
+    30% { transform: translateY(-20px) rotate(-4deg); }
+    60% { transform: translateY(-8px) rotate(4deg); }
+    100% { transform: translateY(0) rotate(0deg); }
+}
+
+.chicken-button.thinking .chicken {
+    animation: chickenThinking 1.1s ease;
+}
+
+@keyframes chickenThinking {
+    0%, 100% { transform: rotate(0deg); }
+    25% { transform: rotate(-7deg); }
+    50% { transform: rotate(7deg); }
+    75% { transform: rotate(-4deg); }
+}
+
+.chicken-button.laugh .chicken {
+    animation: chickenLaugh 0.7s ease;
+}
+
+@keyframes chickenLaugh {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    25% { transform: translateY(-7px) rotate(-4deg); }
+    50% { transform: translateY(0) rotate(4deg); }
+    75% { transform: translateY(-4px) rotate(-2deg); }
+}
+
+.speech {
+    position: absolute;
+    left: 50%;
+    top: 24%;
+    width: min(65%, 255px);
+    padding: 10px 13px;
+    transform: translateX(-50%) translateY(-10px);
+    background: rgba(255, 250, 247, 0.96);
+    border-radius: 17px;
+    box-shadow:
+        0 7px 20px rgba(80, 50, 40, 0.12),
+        0 2px 5px rgba(80, 50, 40, 0.05);
+    z-index: 10;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+}
+
+.speech::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    bottom: -8px;
+    transform: translateX(-50%);
+    width: 16px;
+    height: 12px;
+    background: rgba(255, 250, 247, 0.96);
+    clip-path: polygon(0 0, 100% 0, 50% 100%);
+}
+
+.speech.show {
+    opacity: 1;
+    visibility: visible;
+    transform: translateX(-50%) translateY(0);
+}
+
+.speech p {
+    color: #493936;
+    font-size: 13px;
+    line-height: 1.4;
+    text-align: center;
+}
+
+.effects {
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    z-index: 20;
+}
+
+.effect {
+    position: absolute;
+    font-size: 23px;
+    animation: floatEffect 1.1s ease forwards;
+}
+
+@keyframes floatEffect {
+    0% {
+        opacity: 0;
+        transform: translateY(10px) scale(0.6);
+    }
+    20% { opacity: 1; }
+    100% {
+        opacity: 0;
+        transform: translateY(-70px) scale(1.2);
+    }
+}
+
+.chicken-button.sleeping {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(25px) scale(0.9);
+}
+
+@media (max-width: 430px) {
+    .chicken-button {
+        width: 235px;
+        height: 235px;
+        bottom: 17%;
+    }
+
+    .speech {
+        width: min(68%, 245px);
+        top: 23%;
+    }
+
+    .speech p {
+        font-size: 13px;
+        line-height: 1.4;
+    }
+}
